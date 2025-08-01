@@ -26,9 +26,25 @@ Hotel membutuhkan model prediksi untuk mengidentifikasi potensi pembatalan sejak
 ---
 
 ## Tujuan
-- Membangun model machine learning untuk memprediksi pembatalan pemesanan
-- Menyajikan visualisasi insight melalui Tableau Dashboard
-- Mendeploy model melalui aplikasi web berbasis Streamlit
+- Membangun model prediktif untuk memprediksi pembatalan pemesanan dengan akurasi tinggi.
+- Mengidentifikasi faktor utama yang memengaruhi pembatalan (seperti lead_time, deposit_type, market_segment).
+- Merancang strategi bisnis seperti dynamic pricing dan overbooking terkendali untuk meminimalkan kerugian akibat pembatalan.
+
+---
+
+## Dataset
+
+- Sumber: Kaggle
+- Periode: Juli 2015 - Agustus 2017
+- Lokasi: Resort Hotel (Algarve) dan City Hotel (Lisbon), Portugal
+- Jumlah Baris: Tidak disebutkan secara eksplisit, tetapi mencakup data pemesanan dengan fitur lengkap.
+- Fitur Utama:
+  - is_canceled: Target (0: Tidak dibatalkan, 1: Dibatalkan)
+  - lead_time: Jumlah hari antara pemesanan dan kedatangan
+  - deposit_type: Jenis deposit (No Deposit, Non Refund, Refundable)
+  - market_segment: Segmen pasar (Online TA, Direct, Groups, dll.)
+  - adr: Average Daily Rate (tarif rata-rata harian)
+  - Lihat notebook untuk daftar lengkap 32 atribut.
 
 ---
 
@@ -37,6 +53,45 @@ Hotel membutuhkan model prediksi untuk mengidentifikasi potensi pembatalan sejak
 - **Modeling**: Logistic Regression, Random Forest, XGBoost, dll.
 - **Evaluasi**: ROC-AUC, Akurasi, Precision, Recall, F1-Score
 - **Deployment**: Aplikasi Streamlit
+
+---
+
+## EDA dan Insight
+
+- City Hotel memiliki tingkat pembatalan yang lebih tinggi dibandingkan Resort Hotel.
+- Pelanggan dengan status “non-refundable” cenderung tidak membatalkan.
+- Tamu dengan harga kamar lebih tinggi (adr tinggi) memiliki kemungkinan pembatalan lebih besar.
+- Pelanggan bertipe `Transient` mendominasi dan cenderung lebih sering membatalkan.
+
+---
+
+## Modelling
+
+Model yang diuji:
+- Logistic Regression
+- Decision Tree
+- Random Forest
+- **XGBoost (model terbaik)**
+
+Evaluasi dilakukan dengan:
+- Train-test split
+- Confusion Matrix
+- Classification Report
+- ROC Curve & AUC Score
+- Hyperparameter tuning menggunakan GridSearchCV
+
+---
+
+## Hasil Model
+
+- **XGBoost** memberikan performa terbaik dengan ROC AUC mencapai >90%.
+- Recall dan Precision cukup tinggi untuk mendeteksi kelas "cancel".
+- Model mampu membantu hotel mengantisipasi pembatalan lebih dini.
+- Fitur Penting:
+  - required_car_parking_spaces: Tamu yang meminta parkir cenderung tidak membatalkan.
+  - deposit_type_Non Refund: Kebijakan non-refunded mengurangi pembatalan.
+  - previous_cancellations: Riwayat pembatalan meningkatkan risiko.
+  - market_segment_Online TA: Segmen OTA memiliki risiko pembatalan tinggi.
 
 ---
 
