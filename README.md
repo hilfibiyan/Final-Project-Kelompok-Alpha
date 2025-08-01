@@ -44,7 +44,8 @@ Hotel membutuhkan model prediksi untuk mengidentifikasi potensi pembatalan sejak
 
 **Link**: [[Link Tableau Public](https://public.tableau.com/views/Book1_17442929001870/Dashboard1?:language=en-US&publish=yes&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)]  
 **Screenshot**:  
-[Screenshot Tableau Dashboard](image.png)
+[Screenshot Tableau Dashboard](<img width="1914" height="1199" alt="image" src="https://github.com/user-attachments/assets/49436e4e-2ccb-447b-8c78-6099093042ca" />
+)
 
 ---
 
